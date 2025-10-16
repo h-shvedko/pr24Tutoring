@@ -98,3 +98,8 @@ $typeVariable = gettype($testObject); //gibt den Datentyp der Variable zurück
 //} else {
 //    echo "Variable ist kein Integer oder Float oder NULL" . PHP_EOL;
 //}
+
+/**
+ * Homework 1: Schleife programmieren (for, foreach, while, do while), die Zahlen ausgibt und per if-Bedingung prüft,
+ * ob eine Zahl gerade oder ungerade ist
+ */
