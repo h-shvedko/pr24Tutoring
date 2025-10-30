@@ -11,6 +11,7 @@ require_once 'data.php';
 //include_once 'data.php';
 
 // 2. HAUPTSCHLEIFE
+
 while (true) {
 
     // 3. HAUPTMENÜ ANZEIGEN (Jetzt in Blau und Fett)
@@ -28,45 +29,11 @@ while (true) {
         // require_once "data.php" -> $lagerbestand -> bestandPruefen mit $lagerbestand -> in bestandPruefen arbeiten wir mit Info aus $lagebestand aber gespeichert in $datenbank Variable
     }
     elseif ($aktion == 2) {
-
-        echo STYLE_BOLD . "--- Report: Niedriger Bestand ---\n" . COLOR_RESET;
-        $etwasGefunden = false;
-
-        foreach ($lagerbestand as $details) {
-            if ($details['anzahl'] < $details['warnschwelle']) {
-                if ($details['anzahl'] == 0) {
-                    echo COLOR_RED . "[ALARM] " . $details['name'] . " (Bestand: " . $details['anzahl'] . ")\n" . COLOR_RESET;
-                } else {
-                    echo COLOR_YELLOW . "[WARNUNG] " . $details['name'] . " (Bestand: " . $details['anzahl'] . " / Schwelle: " . $details['warnschwelle'] . ")\n" . COLOR_RESET;
-                }
-                $etwasGefunden = true;
-            }
-        }
-
-        if ($etwasGefunden == false) {
-            echo COLOR_GREEN . "Alle Bestände sind im grünen Bereich!\n" . COLOR_RESET;
-        }
-
+        niedrigeBestand($lagerbestand);
         // --- AKTION 3: Report: Nach Kategorie ---
     }
     elseif ($aktion == 3) {
-
-        echo STYLE_BOLD . "--- Report: Produkte nach Kategorie ---\n" . COLOR_RESET;
-
-        $alleKategorien = array_column($lagerbestand, 'kategorie');
-        $einzigartigeKategorien = array_unique($alleKategorien);
-        sort($einzigartigeKategorien);
-
-        foreach ($einzigartigeKategorien as $kategorie) {
-            echo "\n## KATEGORIE: " . STYLE_BOLD . COLOR_CYAN . $kategorie . COLOR_RESET . " ##\n";
-
-            foreach ($lagerbestand as $details) {
-                if ($details['kategorie'] == $kategorie) {
-                    echo "  - " . $details['name'] . " (Bestand: " . $details['anzahl'] . " Stk.)\n";
-                }
-            }
-        }
-
+        kategorie($lagerbestand);
         // --- AKTION 4: Programm beenden ---
     }
     elseif ($aktion == 4) {
@@ -151,4 +118,54 @@ function bestandPruefen(array $datenbank)
     } else {
         echo COLOR_RED . "[FEHLER] ❓ Ungültige Auswahl.\n" . COLOR_RESET;
     }
+}
+
+/**
+ * @param $lagerbestand
+ * @return mixed
+ */
+function niedrigeBestand($lagerbestand): mixed
+{
+    echo STYLE_BOLD . "--- Report: Niedriger Bestand ---\n" . COLOR_RESET;
+    $etwasGefunden = false;
+
+    foreach ($lagerbestand as $details) {
+        if ($details['anzahl'] < $details['warnschwelle']) {
+            if ($details['anzahl'] == 0) {
+                echo COLOR_RED . "[ALARM] " . $details['name'] . " (Bestand: " . $details['anzahl'] . ")\n" . COLOR_RESET;
+            } else {
+                echo COLOR_YELLOW . "[WARNUNG] " . $details['name'] . " (Bestand: " . $details['anzahl'] . " / Schwelle: " . $details['warnschwelle'] . ")\n" . COLOR_RESET;
+            }
+            $etwasGefunden = true;
+        }
+    }
+
+    if ($etwasGefunden == false) {
+        echo COLOR_GREEN . "Alle Bestände sind im grünen Bereich!\n" . COLOR_RESET;
+    }
+    return $details;
+}
+
+/**
+ * @param $lagerbestand
+ * @return array
+ */
+function kategorie($lagerbestand): array
+{
+    echo STYLE_BOLD . "--- Report: Produkte nach Kategorie ---\n" . COLOR_RESET;
+
+    $alleKategorien = array_column($lagerbestand, 'kategorie');
+    $einzigartigeKategorien = array_unique($alleKategorien);
+    sort($einzigartigeKategorien);
+
+    foreach ($einzigartigeKategorien as $kategorie) {
+        echo "\n## KATEGORIE: " . STYLE_BOLD . COLOR_CYAN . $kategorie . COLOR_RESET . " ##\n";
+
+        foreach ($lagerbestand as $details) {
+            if ($details['kategorie'] == $kategorie) {
+                echo "  - " . $details['name'] . " (Bestand: " . $details['anzahl'] . " Stk.)\n";
+            }
+        }
+    }
+    return $einzigartigeKategorien;
 }
