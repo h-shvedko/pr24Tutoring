@@ -42,8 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if(empty($errors)) {
-//            $hashedPassword = password_hash($pass1, PASSWORD_DEFAULT);
-            $hashedPassword = $pass1;
+            $hashedPassword = password_hash($pass1, PASSWORD_DEFAULT);
             $passwordToStore = $hashedPassword;
             $usernameToStore = $username;
             $userRecord = $usernameToStore . "|||" . $passwordToStore . "\n";

@@ -11,12 +11,29 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['errors'][] = "Password darf nicht leer sein.";
     }
 
-    //@TODO: user in DB finden und identifizieren, falls user existiert dann zum Dashboard weiterleiten, falls nicht exestiert dann zum login weiterleiten
+    $userFound = false;
+    $usersDBData = file_get_contents($dataFile);
+    $usersData = explode("\n", $usersDBData);
+    if($usersDBData !== false) {
+        foreach($usersData as $userString) {
+            $user = explode("|||", $userString);
+            $username = $user[0];
+            $password = $user[1];
 
-    if(empty($errors)) {
-        $_SESSION['username'] = $loginUsername;
+            if($loginUsername == $username && password_verify($loginPassword, $password)) {
+                $_SESSION['username'] = $username;
+                $userFound = true;
+            }
+        }
+    }
+
+    if(empty($errors) && $userFound) {
         require_once "dashboard.php";
         exit;
+    }
+
+    if(!$userFound) {
+        $_SESSION['errors'][] = "Benutzername oder Passwort ist falsch.";
     }
 }
 
