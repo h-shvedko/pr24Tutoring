@@ -18,6 +18,7 @@ $successMessage = "";
 
 // Der Dateiname, in dem wir speichern
 $dataFile = 'users.txt';
+$idDataFile = 'idData.txt';
 
 if (isset($_SESSION['username']) && !empty($_SESSION['username']) && $_SERVER['REQUEST_URI'] != '/dashboard.php') {
     header("Location: dashboard.php");
