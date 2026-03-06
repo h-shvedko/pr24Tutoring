@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # --- DEIN PHP WEBSERVER ---
+  web:
+    build: .
+    container_name: termin_app
+    ports:
+      - "8080:80"  # Erreichbar unter localhost:8080
+    volumes:
+      - .:/var/www/html  # Spiegelt deinen Ordner in den Container
+    depends_on:
+      - db
+    networks:
+      - termin-network
+
+  # --- DIE DATENBANK (MySQL) ---
+  db:
+    image: mysql:8.0
+    container_name: termin_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: termin_db  # Erstellt diese DB automatisch
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql # Speichert Daten dauerhaft, auch nach Neustart
+    ports:
+      - "3306:3306"
+    networks:
+      - termin-network
+
+  # --- PHPMYADMIN (Zum Gucken) ---
+  pma:
+    image: phpmyadmin/phpmyadmin
+    container_name: termin_pma
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8081:80" # Erreichbar unter localhost:8081
+    depends_on:
+      - db
+    networks:
+      - termin-network
+
+# Volumes und Netzwerke definieren
+volumes:
+  db_data:
+
+networks:
+  termin-network:
+    driver: bridge

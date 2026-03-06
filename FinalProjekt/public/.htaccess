@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Wenn die Datei oder der Ordner wirklich existiert (z.B. ein Bild), liefere es aus
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Ansonsten leite alles an index.php weiter
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>

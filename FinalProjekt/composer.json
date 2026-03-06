@@ -1,0 +1,16 @@
+{
+    "name": "root/html",
+    "autoload": {
+        "psr-4": {
+            "Root\\Html\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "fatemeh"
+        }
+    ],
+    "require": {
+        "bramus/router": "^1.6"
+    }
+}
