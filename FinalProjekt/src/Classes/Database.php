@@ -1,10 +1,10 @@
 <?php
 
 class Database {
-    private $host = 'localhost';
-    private $db_name = 'my_database';
-    private $username = 'root';
-    private $password = '';
+    private $host = 'termin_db';
+    private $db_name = 'termin_db';
+    private $username = 'user';
+    private $password = 'password';
     private $conn;
     public static $instance = null;
 
