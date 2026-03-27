@@ -13,7 +13,7 @@ $router->get('/', function() {
 // Login (Zeigen)
 $router->get('/login', function() {
     session_start();
-    if (isset($_SESSION['user_id'])) {
+    if (isset($_SESSION['username'])) {
         header('Location: /dashboard');
         exit();
     }
@@ -25,22 +25,22 @@ $router->post('/login', function() {
     require __DIR__ . '/../src/pages/login.php';
 });
 
-$router->get('/regiester', function() {
+$router->get('/register', function() {
     session_start();
-    if (isset($_SESSION['user_id'])) {
+    if (isset($_SESSION['username'])) {
         header('Location: /dashboard');
         exit();
     }
-    require __DIR__ . '/../src/pages/regiester.php';
+    require __DIR__ . '/../src/pages/register.php';
 });
 
-$router->post('/regiester', function() {
-    require __DIR__ . '/../src/pages/regiester.php';
+$router->post('/register', function() {
+    require __DIR__ . '/../src/pages/register.php';
 });
 
 $router->get('/termine', function() {
     session_start();
-    if (!isset($_SESSION['user_id'])) {
+    if (!isset($_SESSION['username'])) {
         header('Location: /login');
         exit();
     }
@@ -51,7 +51,7 @@ $router->get('/termine', function() {
 $router->get('/dashboard', function() {
     // Hier können wir sogar Session-Check machen
     session_start();
-    if (!isset($_SESSION['user_id'])) {
+    if (!isset($_SESSION['username'])) {
         header('Location: /login');
         exit();
     }

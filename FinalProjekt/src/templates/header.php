@@ -28,7 +28,7 @@
           <a class="nav-link" href="/login">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/regiester">Registrieren</a> 
+          <a class="nav-link" href="/register">Registrieren</a> 
         </li>
       </ul>
       <form class="d-flex" role="search">
