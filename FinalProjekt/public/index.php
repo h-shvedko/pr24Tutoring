@@ -22,6 +22,11 @@ $router->get('/login', function() {
 
 // Login (Formular absenden)
 $router->post('/login', function() {
+    session_start();
+     if (isset($_SESSION['username'])) {
+        header('Location: /dashboard');
+        exit();
+    }
     require __DIR__ . '/../src/pages/login.php';
 });
 
@@ -57,6 +62,8 @@ $router->get('/dashboard', function() {
     }
     require __DIR__ . '/../src/pages/dashboard.php';
 });
-
+$router->get('/logout', function() {
+    require __DIR__ . '/../src/pages/logout.php';
+});
 // Router starten
 $router->run();

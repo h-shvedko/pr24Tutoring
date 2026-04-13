@@ -24,12 +24,18 @@
         <li class="nav-item">
           <a class="nav-link" href="/termine">Freie Termine</a>
         </li>
+        <?php if (isset($_SESSION['username'])): ?>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout (<?= htmlspecialchars($_SESSION['username']) ?>)</a>
+        </li>
+        <?php else: ?>
         <li class="nav-item">
           <a class="nav-link" href="/login">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/register">Registrieren</a> 
         </li>
+        <?php endif; ?>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
