@@ -52,6 +52,15 @@ $router->get('/termine', function() {
     require __DIR__ . '/../src/pages/termine.php';
 });
 
+$router->post('/termine', function() {
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header('Location: /login');
+        exit();
+    }
+    require __DIR__ . '/../src/pages/termine.php';
+});
+
 // Dashboard
 $router->get('/dashboard', function() {
     // Hier können wir sogar Session-Check machen
@@ -64,6 +73,38 @@ $router->get('/dashboard', function() {
 });
 $router->get('/logout', function() {
     require __DIR__ . '/../src/pages/logout.php';
+});
+
+$router->get('/delete-termin/(\d+)', function($id) {
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header('Location: /login');
+        exit();
+    }
+    $_GET['id'] = $id; 
+    require __DIR__ . '/../src/pages/delete-termin.php';
+});
+
+$router->get('/edit-termin/(\d+)', function($id) {
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header('Location: /login');
+        exit();
+    }
+
+    $_GET['id'] = $id;
+    require __DIR__ . '/../src/pages/edit-termin.php';
+});
+
+$router->post('/edit-termin/(\d+)', function($id) {
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header('Location: /login');
+        exit();
+    }
+
+    $_GET['id'] = $id; 
+    require __DIR__ . '/../src/pages/edit-termin.php';
 });
 // Router starten
 $router->run();

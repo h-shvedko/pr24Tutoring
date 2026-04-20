@@ -22,7 +22,7 @@
           <a class="nav-link" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/termine">Freie Termine</a>
+          <a class="nav-link" href="/termine">Neue Termine</a>
         </li>
         <?php if (isset($_SESSION['username'])): ?>
         <li class="nav-item">
