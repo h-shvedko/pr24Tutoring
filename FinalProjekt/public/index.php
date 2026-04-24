@@ -7,6 +7,7 @@ $router = new \Bramus\Router\Router();
 
 // Startseite
 $router->get('/', function() {
+    session_start();
     require __DIR__ . '/../src/pages/home.php';
 });
 
