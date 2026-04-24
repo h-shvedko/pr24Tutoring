@@ -90,6 +90,13 @@ class AppointmentService
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function getAppointmentBySearch($query) {
+        $db = Database::getInstance()->getConnection();
+        $stmt = $db->prepare("SELECT * FROM termine WHERE title LIKE :query OR description LIKE :query");
+        $stmt->execute([':query' => "%$query%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function getAppointmentsByUserId($userId) {
         $db = Database::getInstance()->getConnection();
         $stmt = $db->prepare("
@@ -100,6 +107,23 @@ class AppointmentService
         $stmt->execute([':user_id' => $userId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function getAppointmentsByUserIdAndDateRange($userId, $startDate, $endDate) {
+        $db = Database::getInstance()->getConnection();
+        $stmt = $db->prepare("
+            SELECT t.* FROM termine t
+            JOIN users_to_termine ut ON t.id = ut.termine_id
+            WHERE ut.user_id = :user_id
+            AND t.date BETWEEN :start_date AND :end_date
+        ");
+        $stmt->execute([
+            ':user_id' => $userId,
+            ':start_date' => $startDate,
+            ':end_date' => $endDate
+        ]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function deleteAppointment($appointmentId) {
         if (empty($appointmentId)) {
             $_SESSION['errors'] = ['Ungültige Termin-ID.'];

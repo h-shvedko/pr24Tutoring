@@ -107,5 +107,14 @@ $router->post('/edit-termin/(\d+)', function($id) {
     $_GET['id'] = $id; 
     require __DIR__ . '/../src/pages/edit-termin.php';
 });
+
+$router->get('/search', function() {
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header('Location: /login');
+        exit();
+    }
+    require __DIR__ . '/../src/pages/search.php';
+});
 // Router starten
 $router->run();
