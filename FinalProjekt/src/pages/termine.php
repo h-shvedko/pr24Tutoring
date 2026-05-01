@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once __DIR__ . '/../templates/header.php';
 ?>
 
-<h1>Neuen Termin erstellen</h1>
+<h1>New Appointment</h1>
 
 <?php if (!empty($_SESSION['errors'])): ?>
     <div class="alert alert-danger">
@@ -35,41 +35,41 @@ require_once __DIR__ . '/../templates/header.php';
 
 <form method="post">
     <div>
-        <label class="form-label" for="title">Titel:</label><br>
+        <label class="form-label" for="title">Title:</label><br>
         <input type="text" id="title" name="title" value="<?= htmlspecialchars($title ?? '') ?>" class="form-control">
     </div>
 
     <br>
 
     <div>
-        <label class="form-label" for="description">Beschreibung:</label><br>
+        <label class="form-label" for="description">Description:</label><br>
         <textarea id="description" name="description" class="form-control"><?= htmlspecialchars($description ?? '') ?></textarea>
     </div>
 
     <br>
 
     <div>
-        <label class="form-label" for="date">Datum:</label><br>
+        <label class="form-label" for="date">Date:</label><br>
         <input type="date" id="date" name="date" value="<?= htmlspecialchars($date ?? '') ?>" class="form-control">
     </div>
 
     <br>
 
     <div>
-        <label class="form-label" for="time">Uhrzeit:</label><br>
+        <label class="form-label" for="time">Time:</label><br>
         <input type="time" id="time" name="time" value="<?= htmlspecialchars($time ?? '') ?>" class="form-control">
     </div>
 
     <br>
 
     <div>
-        <label class="form-label" for="location">Ort:</label><br>
+        <label class="form-label" for="location">Location:</label><br>
         <input type="text" id="location" name="location" value="<?= htmlspecialchars($location ?? '') ?>" class="form-control">
     </div>
 
     <br>
 
-    <button type="submit" class="btn btn-primary">Termin speichern</button>
+    <button type="submit" class="btn btn-primary">Save Appointment</button>
 </form>
 
 <?php

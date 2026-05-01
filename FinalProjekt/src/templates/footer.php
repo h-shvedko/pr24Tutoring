@@ -5,9 +5,9 @@
         <div class="row g-4">
             <!-- About Section -->
             <div class="col-lg-4 col-md-6">
-                <h5 class="fw-bold mb-3">Terminverwaltung</h5>
+                <h5 class="fw-bold mb-3">Appointment management</h5>
                 <p class="text-muted mb-3">
-                    Ihre zuverlässige Lösung für die einfache und effiziente Verwaltung von Terminen und Aufgaben.
+                    Your reliable solution for simple and efficient appointment and task management.
                 </p>
                 <div class="d-flex gap-2">
                     <a href="#" class="text-light" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -18,14 +18,14 @@
 
             <!-- Quick Links -->
             <div class="col-lg-2 col-md-6">
-                <h6 class="fw-bold mb-3">Schnellzugriff</h6>
+                <h6 class="fw-bold mb-3">Quick Access</h6>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a href="/" class="text-muted text-decoration-none">Home</a></li>
                     <li class="mb-2"><a href="/dashboard" class="text-muted text-decoration-none">Dashboard</a></li>
-                    <li class="mb-2"><a href="/termine" class="text-muted text-decoration-none">Neue Termine</a></li>
+                    <li class="mb-2"><a href="/termine" class="text-muted text-decoration-none">New Appointments</a></li>
                     <?php if (!isset($_SESSION['username'])): ?>
                         <li class="mb-2"><a href="/login" class="text-muted text-decoration-none">Login</a></li>
-                        <li class="mb-2"><a href="/register" class="text-muted text-decoration-none">Registrieren</a></li>
+                        <li class="mb-2"><a href="/register" class="text-muted text-decoration-none">Register</a></li>
                     <?php else: ?>
                         <li class="mb-2"><a href="/logout" class="text-muted text-decoration-none">Logout</a></li>
                     <?php endif; ?>
@@ -36,16 +36,16 @@
             <div class="col-lg-2 col-md-6">
                 <h6 class="fw-bold mb-3">Services</h6>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Terminplanung</a></li>
-                    <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Kalender-Integration</a></li>
-                    <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Erinnerungen</a></li>
-                    <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Berichterstattung</a></li>
+                    <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Appointment Scheduling</a></li>
+                    <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Calendar Integration</a></li>
+                    <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Reminders</a></li>
+                    <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Reporting</a></li>
                 </ul>
             </div>
 
             <!-- Contact Info -->
             <div class="col-lg-4 col-md-6">
-                <h6 class="fw-bold mb-3">Kontakt</h6>
+                <h6 class="fw-bold mb-3">Contact</h6>
                 <div class="d-flex align-items-center mb-2">
                     <i class="fas fa-envelope me-2"></i>
                     <span class="text-muted">info@terminverwaltung.ch</span>
@@ -65,12 +65,12 @@
         <hr class="my-4">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <p class="text-muted mb-0">&copy; <?php echo date('Y'); ?> Terminverwaltung. Alle Rechte vorbehalten.</p>
+                <p class="text-muted mb-0">&copy; <?php echo date('Y'); ?> Appointment management. All rights reserved.</p>
             </div>
             <div class="col-md-6 text-md-end">
-                <a href="#" class="text-muted text-decoration-none me-3">Datenschutz</a>
-                <a href="#" class="text-muted text-decoration-none me-3">AGB</a>
-                <a href="#" class="text-muted text-decoration-none">Impressum</a>
+                <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                <a href="#" class="text-muted text-decoration-none me-3">Terms of Service</a>
+                <a href="#" class="text-muted text-decoration-none">Imprint</a>
             </div>
         </div>
     </div>

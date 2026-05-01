@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once __DIR__ . '/../templates/header.php';
 ?>
 
-<h1>Willkommen auf der Registrierungsseite!</h1>
+<h1>Welcome to the Registration Page!</h1>
 
 <?php if (!empty($_SESSION['errors'])): ?>
     <div class="alert alert-danger w-25">
@@ -43,11 +43,11 @@ require_once __DIR__ . '/../templates/header.php';
       <input class="form-control" type="text" name="email">
     </div>
     <div class="col-12 col-md">
-      <label>Passwort:</label>
+      <label>Password:</label>
       <input class="form-control" type="password" name="password">
     </div>
     <div class="col-12 mt-3">
-        <button class="btn btn-success" type="submit">Registrieren</button>
+        <button class="btn btn-success" type="submit">Register</button>
     </div>
   </div>
 </form>

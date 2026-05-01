@@ -16,7 +16,7 @@ $appointments = AppointmentService::getAppointmentBySearch($query);
 require_once __DIR__ . '/../templates/header.php';
     ?>
 
-    <h1>Suchergebnisse für "<?= htmlspecialchars($query) ?>"</h1>
+    <h1>Search Results for "<?= htmlspecialchars($query) ?>"</h1>
     <?php if (count($appointments) > 0): ?>
         <div class="list-group">
             <?php foreach ($appointments as $appointment): ?>
@@ -28,7 +28,7 @@ require_once __DIR__ . '/../templates/header.php';
             <?php endforeach; ?>
         </div>
     <?php else: ?>
-        <p>Keine Termine gefunden.</p>
+        <p>No appointments found.</p>
     <?php endif; ?>
     <?php
     require_once __DIR__ . '/../templates/footer.php';

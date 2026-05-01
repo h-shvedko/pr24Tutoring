@@ -6,17 +6,17 @@ require_once __DIR__ . '/../templates/header.php';
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-4">Willkommen zur Terminverwaltung!</h1>
+                <h1 class="display-4 fw-bold mb-4">Welcome to the appointment management system!</h1>
                 <p class="lead mb-4">
-                    Verwalten Sie Ihre Termine einfach und effizient. Erstellen Sie neue Termine, bearbeiten Sie bestehende Einträge und behalten Sie den Überblick über Ihre Zeitplanung.
+                    Manage your appointments easily and efficiently. Create new appointments, edit existing entries, and keep track of your schedule.
                 </p>
                 <div class="d-flex gap-3">
                     <?php if (!isset($_SESSION['username'])): ?>
-                        <a href="/register" class="btn btn-light btn-lg fw-bold">Kostenlos registrieren</a>
+                        <a href="/register" class="btn btn-light btn-lg fw-bold">Sign up for free</a>
                         <a href="/login" class="btn btn-light btn-lg fw-bold">Login</a>
                     <?php else: ?>
-                        <a href="/dashboard" class="btn btn-light btn-lg fw-bold">Zu deinem Dashboard</a>
-                        <a href="/termine" class="btn btn-light btn-lg fw-bold">Neue Termine</a>
+                        <a href="/dashboard" class="btn btn-light btn-lg fw-bold">Go to your dashboard</a>
+                        <a href="/termine" class="btn btn-light btn-lg fw-bold">Create New Appointments</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -26,16 +26,16 @@ require_once __DIR__ . '/../templates/header.php';
 <!-- Features Section -->
 <div class="features-section py-5">
     <div class="container">
-        <h2 class="text-center mb-5 fw-bold">Funktionen</h2>
+        <h2 class="text-center mb-5 fw-bold">Features</h2>
         <div class="row g-4">
             <!-- Feature 1 -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 shadow-sm border-0 transition">
                     <div class="card-body text-center">
                         <div class="feature-icon mb-3" style="font-size: 3rem;">📅</div>
-                        <h5 class="card-title fw-bold mb-3">Termine verwalten</h5>
+                        <h5 class="card-title fw-bold mb-3">Manage Appointments</h5>
                         <p class="card-text text-muted">
-                            Erstellen, bearbeiten und löschen Sie Ihre Termine mit wenigen Klicks. Behalten Sie alle Ihre Aufgaben übersichtlich im Blick.
+                            Create, edit, and delete your appointments with just a few clicks. Keep all your tasks organized and visible at a glance.
                         </p>
                     </div>
                 </div>
@@ -46,9 +46,9 @@ require_once __DIR__ . '/../templates/header.php';
                 <div class="card h-100 shadow-sm border-0 transition">
                     <div class="card-body text-center">
                         <div class="feature-icon mb-3" style="font-size: 3rem;">👤</div>
-                        <h5 class="card-title fw-bold mb-3">Benutzerkonten</h5>
+                        <h5 class="card-title fw-bold mb-3">User Accounts</h5>
                         <p class="card-text text-muted">
-                            Erstellen Sie ein sicheres Benutzerkonto und greifen Sie von überall auf Ihre Termine zu.
+                            Create a secure user account and access your appointments from anywhere.
                         </p>
                     </div>
                 </div>
@@ -59,9 +59,9 @@ require_once __DIR__ . '/../templates/header.php';
                 <div class="card h-100 shadow-sm border-0 transition">
                     <div class="card-body text-center">
                         <div class="feature-icon mb-3" style="font-size: 3rem;">⚡</div>
-                        <h5 class="card-title fw-bold mb-3">Schnell & Einfach</h5>
+                        <h5 class="card-title fw-bold mb-3">Fast & Easy</h5>
                         <p class="card-text text-muted">
-                            Intuitive Benutzeroberfläche für schnelle und einfache Verwaltung Ihrer Terminkalender.
+                            Intuitive user interface for quick and easy management of your appointment calendar.
                         </p>
                     </div>
                 </div>
@@ -75,16 +75,16 @@ require_once __DIR__ . '/../templates/header.php';
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-3">Bereit zu beginnen?</h3>
+                <h3 class="fw-bold mb-3">Ready to get started?</h3>
                 <p class="text-muted mb-0">
-                    Registrieren Sie sich jetzt und starten Sie die Verwaltung Ihrer Termine.
+                    Sign up now and start managing your appointments.
                 </p>
             </div>
             <div class="col-lg-4 text-lg-end">
                 <?php if (!isset($_SESSION['username'])): ?>
-                    <a href="/register" class="btn btn-primary btn-lg">Jetzt registrieren</a>
+                    <a href="/register" class="btn btn-primary btn-lg">Sign up now</a>
                 <?php else: ?>
-                    <a href="/termine" class="btn btn-primary btn-lg">Neuen Termin erstellen</a>
+                    <a href="/termine" class="btn btn-primary btn-lg">Create New Appointment</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -99,22 +99,22 @@ require_once __DIR__ . '/../templates/header.php';
                 <div class="mb-3">
                     <div class="display-6 text-primary fw-bold">🎯</div>
                 </div>
-                <h5 class="fw-bold">Effizient</h5>
-                <p class="text-muted">Sparen Sie Zeit bei der Verwaltung Ihrer Termine und bleiben Sie organisiert.</p>
+                <h5 class="fw-bold">Efficient</h5>
+                <p class="text-muted">Save time managing your appointments and stay organized.</p>
             </div>
             <div class="col-md-4 text-center mb-4">
                 <div class="mb-3">
                     <div class="display-6 text-success fw-bold">🔒</div>
                 </div>
-                <h5 class="fw-bold">Sicher</h5>
-                <p class="text-muted">Ihre Daten werden sicher gespeichert und sind nur für Sie zugänglich.</p>
+                <h5 class="fw-bold">Secure</h5>
+                <p class="text-muted">Your data is securely stored and only accessible to you.</p>
             </div>
             <div class="col-md-4 text-center mb-4">
                 <div class="mb-3">
                     <div class="display-6 text-info fw-bold">🚀</div>
                 </div>
-                <h5 class="fw-bold">Zuverlässig</h5>
-                <p class="text-muted">Auf jederzeit verfügbar und immer einsatzbereit für Sie.</p>
+                <h5 class="fw-bold">Reliable</h5>
+                <p class="text-muted">Always available and ready for use whenever you need it.</p>
             </div>
         </div>
     </div>
