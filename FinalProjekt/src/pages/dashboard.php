@@ -5,22 +5,27 @@ require_once __DIR__ . '/../Classes/AppointmentService.php';
 
 echo "<h1>Welcome to the Dashboard!</h1>";
 ?>
-
-<div class='container mt-5'>
-    <h2>Number of users</h2>
-    <div class='card w-25'>
-        <div class='card-body'>
-            <h5 class='card-title'>Number of users</h5>
-            <p class='card-text'><?php echo UserService::getNumberOfUsers(); ?></p>
+  <div class="row w-75">
+        <div class="col-md-4 mb-3 mt-10">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Number of users</h5>
+                    <p class="card-text">
+                        <?php echo UserService::getNumberOfUsers(); ?>
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<div class='container mt-5'>
-    <h2>Number of appointments</h2>
-    <div class='card w-25'>
-        <div class='card-body'>
-            <h5 class='card-title'>Number of appointments</h5>
-            <p class='card-text'><?php echo AppointmentService::getNumberOfAppointments(); ?></p>
+
+        <div class="col-md-4 mb-3 mt-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Number of appointments</h5>
+                    <p class="card-text">
+                        <?php echo AppointmentService::getNumberOfAppointments(); ?>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
