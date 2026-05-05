@@ -64,7 +64,7 @@ echo "<h1>Welcome to the Dashboard!</h1>";
 <div class='container mt-5'>
     <h2>Appointments for this week</h2>
     <?php
-    $startDate = date('Y-m-d', strtotime('monday this week'));
+    $startDate = date('Y-m-d');
     $endDate = date('Y-m-d', strtotime('sunday this week'));
     ?>
     <?php $termine = AppointmentService::getAppointmentsByUserIdAndDateRange($_SESSION['user_id'], $startDate, $endDate); ?>
@@ -97,6 +97,41 @@ echo "<h1>Welcome to the Dashboard!</h1>";
     </table>
 </div>
 
+<div class='container mt-5'>
+    <h2>Appointments for this month</h2>
+    <?php
+    $startDate = date('Y-m-d');
+    $endDate = date('Y-m-d', strtotime('last day of this month'));
+    ?>
+    <?php $termine = AppointmentService::getAppointmentsByUserIdAndDateRange($_SESSION['user_id'], $startDate, $endDate); ?>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Location</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($termine as $termin): ?>
+            <tr>
+                <td><?= htmlspecialchars($termin['title']) ?></td>
+                <td><?= htmlspecialchars($termin['description']) ?></td>
+                <td><?= htmlspecialchars($termin['date']) ?></td>
+                <td><?= htmlspecialchars($termin['time']) ?></td>
+                <td><?= htmlspecialchars($termin['location']) ?></td>
+                <td>
+                    <a href="/edit-termin/<?= $termin['id'] ?>" class="btn btn-sm btn-outline-primary">Edit</a>
+                    <a href="/delete-termin/<?= $termin['id'] ?>" class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 
 <div class='container mt-5'>
     <h2> All Appointments</h2>

@@ -16,24 +16,24 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link <?php echo ($_SESSION['page'] === 'home') ? 'active' : ''; ?>" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/dashboard">Dashboard</a>
+          <a class="nav-link <?php echo ($_SESSION['page'] === 'dashboard') ? 'active' : ''; ?>" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/termine">New Appointments</a>
+          <a class="nav-link <?php echo ($_SESSION['page'] === 'termine') ? 'active' : ''; ?>" href="/termine">New Appointments</a>
         </li>
         <?php if (isset($_SESSION['username'])): ?>
         <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout (<?= htmlspecialchars($_SESSION['username']) ?>)</a>
+          <a class="nav-link <?php echo ($_SESSION['page'] === 'logout') ? 'active' : ''; ?>" href="/logout">Logout (<?= htmlspecialchars($_SESSION['username']) ?>)</a>
         </li>
         <?php else: ?>
         <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link <?php echo ($_SESSION['page'] === 'login') ? 'active' : ''; ?>" href="/login">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/register">Register</a> 
+          <a class="nav-link <?php echo ($_SESSION['page'] === 'register') ? 'active' : ''; ?>" href="/register">Register</a> 
         </li>
         <?php endif; ?>
       </ul>

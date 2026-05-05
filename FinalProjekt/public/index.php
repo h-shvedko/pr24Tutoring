@@ -5,15 +5,18 @@ $router = new \Bramus\Router\Router();
 
 // ROUTEN DEFINIEREN:
 
+session_start();
+$_SESSION['page'] = '';
+
 // Startseite
 $router->get('/', function() {
-    session_start();
+    $_SESSION['page'] = 'home';
     require __DIR__ . '/../src/pages/home.php';
 });
 
 // Login (Zeigen)
 $router->get('/login', function() {
-    session_start();
+    $_SESSION['page'] = 'login';
     if (isset($_SESSION['username'])) {
         header('Location: /dashboard');
         exit();
@@ -23,7 +26,7 @@ $router->get('/login', function() {
 
 // Login (Formular absenden)
 $router->post('/login', function() {
-    session_start();
+    $_SESSION['page'] = 'login';
      if (isset($_SESSION['username'])) {
         header('Location: /dashboard');
         exit();
@@ -32,7 +35,7 @@ $router->post('/login', function() {
 });
 
 $router->get('/register', function() {
-    session_start();
+    $_SESSION['page'] = 'register';
     if (isset($_SESSION['username'])) {
         header('Location: /dashboard');
         exit();
@@ -45,7 +48,7 @@ $router->post('/register', function() {
 });
 
 $router->get('/termine', function() {
-    session_start();
+    $_SESSION['page'] = 'termine';
     if (!isset($_SESSION['username'])) {
         header('Location: /login');
         exit();
@@ -54,7 +57,7 @@ $router->get('/termine', function() {
 });
 
 $router->post('/termine', function() {
-    session_start();
+    $_SESSION['page'] = 'termine';
     if (!isset($_SESSION['username'])) {
         header('Location: /login');
         exit();
@@ -65,7 +68,7 @@ $router->post('/termine', function() {
 // Dashboard
 $router->get('/dashboard', function() {
     // Hier können wir sogar Session-Check machen
-    session_start();
+    $_SESSION['page'] = 'dashboard';
     if (!isset($_SESSION['username'])) {
         header('Location: /login');
         exit();
@@ -77,7 +80,8 @@ $router->get('/logout', function() {
 });
 
 $router->get('/delete-termin/(\d+)', function($id) {
-    session_start();
+
+    $_SESSION['page'] = 'delete-termin';
     if (!isset($_SESSION['username'])) {
         header('Location: /login');
         exit();
@@ -87,7 +91,7 @@ $router->get('/delete-termin/(\d+)', function($id) {
 });
 
 $router->get('/edit-termin/(\d+)', function($id) {
-    session_start();
+    $_SESSION['page'] = 'edit-termin';
     if (!isset($_SESSION['username'])) {
         header('Location: /login');
         exit();
@@ -98,7 +102,7 @@ $router->get('/edit-termin/(\d+)', function($id) {
 });
 
 $router->post('/edit-termin/(\d+)', function($id) {
-    session_start();
+    $_SESSION['page'] = 'edit-termin';
     if (!isset($_SESSION['username'])) {
         header('Location: /login');
         exit();
@@ -109,7 +113,7 @@ $router->post('/edit-termin/(\d+)', function($id) {
 });
 
 $router->get('/search', function() {
-    session_start();
+    $_SESSION['page'] = 'search';
     if (!isset($_SESSION['username'])) {
         header('Location: /login');
         exit();
